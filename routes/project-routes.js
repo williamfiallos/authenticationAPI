@@ -12,6 +12,7 @@ router.post('/projects', (req, res, next) => {
     title: req.body.title,
     description: req.body.description,
     tasks: [],
+    owner: req.user._id,
   })
     .then(response => {
       res.json(response);

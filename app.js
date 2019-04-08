@@ -8,11 +8,6 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
 const cors = require('cors');
-
-// WHEN INTRODUCING USERS DO THIS:
-// INSTALL THESE DEPENDENCIES: passport-local, passport, bcryptjs, express-session
-// AND UN-COMMENT OUT FOLLOWING LINES:
-
 const session = require('express-session');
 const passport = require('passport');
 
@@ -59,17 +54,13 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-// ADD SESSION SETTINGS HERE:
-
 app.use(
   session({
-    secret: 'some secret goes here',
+    secret: 'qwerty',
     resave: true,
     saveUninitialized: true,
   })
 );
-
-// USE passport.initialize() and passport.session() HERE:
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -86,9 +77,9 @@ app.use(
 
 // ROUTES MIDDLEWARE STARTS HERE:
 
-const index = require('./routes/index');
+app.use('/api', require('./routes/auth-routes'));
 app.use('/api', require('./routes/project-routes'));
 app.use('/api', require('./routes/task-routes'));
-app.use('/', index);
+app.use('/', require('./routes/index'));
 
 module.exports = app;
