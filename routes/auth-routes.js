@@ -94,7 +94,7 @@ authRoutes.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
-authRoutes.post('/logout', (req, res, next) => {
+authRoutes.get('/logout', (req, res, next) => {
   // req.logout() is defined by passport
   req.logout();
   res.status(200).json({ message: 'Log out success!' });
