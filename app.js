@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
-const logger = require('morgan');
+const logger = require('morgan');..
 const path = require('path');
 const cors = require('cors');
 const session = require('express-session');
@@ -54,6 +54,8 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
+// ADD SESSION SETTINGS HERE:
+
 app.use(
   session({
     secret: 'qwerty',
@@ -61,6 +63,8 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+// USE passport.initialize() and passport.session() HERE:
 
 app.use(passport.initialize());
 app.use(passport.session());

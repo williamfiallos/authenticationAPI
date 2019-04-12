@@ -3,6 +3,7 @@ const authRoutes = express.Router();
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
+// require the User model !!!
 const User = require('../models/user-model');
 
 authRoutes.post('/signup', (req, res, next) => {
@@ -94,6 +95,7 @@ authRoutes.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
+// Lesson shows authRoutes.post; why is it different?
 authRoutes.get('/logout', (req, res, next) => {
   // req.logout() is defined by passport
   req.logout();

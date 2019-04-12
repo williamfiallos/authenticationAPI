@@ -1,5 +1,7 @@
 // models/project-model.js
 
+// Lesson has const User = require('./user-model'); why?
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
